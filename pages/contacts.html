@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт визитка</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="#">
+            <h1 class="header__title">Герасимов Лев</h1>
+        </header>
+        <nav class="nav">
+            <section class="nav__container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="../index.html">Главная</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="projects.html">Проекты</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="diary.html">Дневник</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+                <div class="theme-toggle">
+                    <button id="themeToggle"><img src="images/icon_theme.png"></button>
+                </div>
+            </section>
+        </nav>
+        <main class="main">
+            <section class="contacts">
+                <h2 class="contacts__title">Свяжитесь со мной</h2>
+                <div class="contacts__container">
+                    <div class="contacts__form">
+                        <form id="feedbackForm" method="dialog">
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="name">Имя</label>
+                                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                            </div>
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="email">Электронная почта</label>
+                                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                            </div>
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="message">Текст обращения</label>
+                                <textarea id="message" name="message" required placeholder="Напишите свой вопрос..."></textarea>
+                            </div>
+                            <div class="contacts__actions">
+                                <button type="button" class="contacts__submit" onclick="submitForm()">Отправить сообщение</button>
+                            </div>
+                        </form>
+                    </div>
+                    <section class="contacts__info">
+                        <h3>Контакты</h3>
+                        <div class="contacts__list">
+                            <p>📧 student@edu.ru</p>
+                            <p>📱 GitHub: username</p>
+                            <p>📍 Город, Страна </p>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 Все права защищены.</p>
+        </footer>
+
+
+    </div>
+</body>
+
+</html>

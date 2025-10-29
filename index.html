@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт визитка</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="#">
+            <h1 class="header__title">Герасимов Лев</h1>
+        </header>
+        <nav class="nav">
+            <section class="nav__container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="pages/projects.html">Проекты</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="pages/diary.html">Дневник</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                    </li>
+                </ul>
+                <div class="theme-toggle">                
+                        <button id="themeToggle"><img src="images/icon_theme.png"></button>
+                </div>
+            </section>
+        </nav>
+        <main class="main">
+            
+            <section class="profile">
+                <div class="profile__card">
+                    <img class="profile__photo" src="images/photo.png" alt="Фото">
+                    <div class="profile__info">
+                        <!-- <h2 class="profile__name">Герасимов Лев Михайлович</h2>
+                        <p class="profile__group">ЭФБО-07-24</p> -->
+
+                        <p class="profile__description"> Привет! Я студент группы ЭФБО-07-24.</p>
+
+                        <button class="profile__button">Скачать резюме</button>
+
+                    </div>
+                </div>
+            </section>
+
+
+    
+
+            <section class="skills">
+                <h2 class="skills__title">Мои навыки</h2>
+                <div class="skills__list">
+                    <!-- Тут я буду реализовавать полоски заполненные на определённый процент. Хз, типа мои познания в языке наверное-->
+                </div>
+            </section>
+
+
+            <section class="projects">
+                <h2 class="projects__title">Мои лучшие проекты</h2>
+                <div class="projects__list">
+                    <!-- Тут я буду реалализовывать списток из пары проектов. это будут карточки, при нажатии на которые будет открываться модалка-->
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 Все права защищены.</p>
+        </footer>
+
+
+    </div>
+</body>
+</html>

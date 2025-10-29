@@ -1,0 +1,356 @@
+:root {
+    --color-background: #ffffff;
+    --color-surface: #fbfeff;
+    --color-text-base: #ffffff;
+    --color-text-primary: #474b4f;
+    --color-text-secondary: #6b6e70;
+    --color-text-inverse: #ffffff;
+    --color-primary: #61892f;
+    --color-accent: #86c232;
+    --color-navigation: #222629;
+    --color-error: #e74c3c;
+
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --radius: 10px;
+    --radius-modal: 12px;
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --center: center;
+}
+
+[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #2d2d2d;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-inverse: #000000; 
+  --shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* Базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+/* Блок page */
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--color-background);
+    min-height: 100vh;
+
+    transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+
+/* Блок header */
+.header {
+    background: var(--color-primary);
+    color: var(--color-text-base);
+    padding: var(--space-lg);
+    text-align: center;
+}
+
+.header__title {
+    font-size: 2rem;
+}
+
+/* Блок nav */
+.nav {
+    background-color: var(--color-navigation);
+}
+.nav__container{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--radius);
+    transition: background-color 0.3s;
+    width: 40px;        
+    height: 40px;      
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle button img {
+    width: 24px;        
+    height: 24px;
+    object-fit: contain;
+    filter: invert(1); 
+
+}
+
+.theme-toggle button:hover {
+    background: var(--color-accent);
+}
+
+.nav__list {  
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.nav__item { 
+    margin: 0;
+}
+
+.nav__link {  
+    display: block;
+    padding: var(--space-md);
+    color: var(--color-text-base);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav__link:hover {
+    background: var(--color-accent);
+}
+
+.nav__item--active .nav__link {   
+    background: var(--color-navigation);
+    font-weight: bold;
+}
+
+.nav__item--active:hover .nav__link {
+    background-color: var(--color-accent);
+    border-radius: var(--radius);
+}
+
+/* Блок main */
+.main {
+    padding: var(--space-lg);
+}
+
+/* Блок profile */
+.profile {
+    margin-bottom: var(--space-lg);
+}
+
+.profile__card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    background: var(--color-background);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.profile__photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 3%;
+    border: 3px solid var(--color-accent);
+}
+
+.profile__name {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.profile__group {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+/* Блок about */
+.about {
+    background: var(--color-background);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.about__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.about__text {
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
+/* Блок skills */
+.skills {
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+    padding: var(--space-lg);
+    background: var(--color-background);
+    border-radius: var(--radius);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.skills__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.skills__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Блок skill с модификаторами */
+.skill {
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    color: var(--color-text-inverse);
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Блок experience */
+.experience__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.experience__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+/* Блок experience-card */
+.experience-card {
+    background: var(--color-background);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--color-accent);
+    transition: transform 0.3s;
+    transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+}
+
+.experience-card__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.experience-card__desc {
+    color: var(--color-text-secondary);
+}
+
+/* Блок footer */
+.footer {
+    background-color: var(--color-navigation);
+    color: var(--color-text-base);
+    text-align: center;
+    padding: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+/* ====== Страница contscts.htlm ====== */
+.contacts {
+    background: var(--color-background);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.contacts__container {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--space-lg);
+}
+
+.contacts__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.contacts__form {
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.contacts__field {
+    padding: var(--space-sm);
+    display: block;
+}
+
+.contacts__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.contacts__input, .contacts__textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+}
+
+.contacts__info {
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.contacts__form, .contacts__info {
+    flex: 1;
+    margin-bottom: 0;
+}
