@@ -30,13 +30,13 @@
                         <a class="nav__link" href="pages/contacts.html">Контакты</a>
                     </li>
                 </ul>
-                <div class="theme-toggle">                
-                        <button id="themeToggle"><img src="images/icon_theme.png"></button>
+                <div class="theme-toggle">
+                    <button id="themeToggle"><img src="images/icon_theme.png"></button>
                 </div>
             </section>
         </nav>
         <main class="main">
-            
+
             <section class="profile">
                 <div class="profile__card">
                     <img class="profile__photo" src="images/photo.png" alt="Фото">
@@ -46,19 +46,36 @@
 
                         <p class="profile__description"> Привет! Я студент группы ЭФБО-07-24.</p>
 
-                        <button class="profile__button">Скачать резюме</button>
+                        <button class="profile__button">
+                            <a class="profile__link" href="assets/Герасимов Лев.docx" target="_blank">Скачать резюме</a>
+                        </button>
 
                     </div>
                 </div>
             </section>
 
 
-    
+
 
             <section class="skills">
                 <h2 class="skills__title">Мои навыки</h2>
                 <div class="skills__list">
-                    <!-- Тут я буду реализовавать полоски заполненные на определённый процент. Хз, типа мои познания в языке наверное-->
+                    <div class="skill">
+                        <label class="skill__label">HTML</label>
+                        <progress class="skill__progress skill__progress--html" max="100" value="60">70%</progress>
+                    </div>
+                    <div class="skill">
+                        <label class="skill__label">CSS</label>
+                        <progress class="skill__progress skill__progress--css" max="100" value="67">70%</progress>
+                    </div>
+                    <div class="skill">
+                        <label class="skill__label">JS</label>
+                        <progress class="skill__progress skill__progress--js" max="100" value="30">70%</progress>
+                    </div>
+                    <div class="skill">
+                        <label class="skill__label">C#</label>
+                        <progress class="skill__progress skill__progress--c" max="100" value="23">70%</progress>
+                    </div>
                 </div>
             </section>
 
@@ -66,7 +83,40 @@
             <section class="projects">
                 <h2 class="projects__title">Мои лучшие проекты</h2>
                 <div class="projects__list">
-                    <!-- Тут я буду реалализовывать списток из пары проектов. это будут карточки, при нажатии на которые будет открываться модалка-->
+
+                    <div class="project__card">
+                        <img class="project__image" src="images/project1.jpg">
+                        <div class="project__body">
+                            <div class="project__title">
+                                <h3>Сайт вихитка</h3>
+                            </div>
+                            <p class="project__description">
+                                Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project__card">
+                        <img class="project__image" src="images/project2.png">
+                        <div class="project__body">
+                            <div class="project__title">
+                                <h3>Todo приложение</h3>
+                            </div>
+                            <p class="project__description">
+                                Приложение для управления задачами с использованием JavaScript.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project__card">
+                        <img class="project__image" src="images/project3.png">
+                        <div class="project__body">
+                            <div class="project__title">
+                                <h3>Интернет магазин</h3>
+                            </div>
+                            <p class="project__description">
+                                Прототип интернет-магазина с корзиной товаров и фильтрацией.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -80,4 +130,5 @@
 
     </div>
 </body>
+
 </html>

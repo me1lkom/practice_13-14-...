@@ -5,13 +5,16 @@
     --color-text-primary: #474b4f;
     --color-text-secondary: #6b6e70;
     --color-text-inverse: #ffffff;
+
     --color-primary: #61892f;
     --color-accent: #86c232;
     --color-navigation: #222629;
     --color-error: #e74c3c;
+    --color-progress: #bebebe;
 
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     --radius: 10px;
+    --radius-progress: 6px;
     --radius-modal: 12px;
     --space-sm: 10px;
     --space-md: 20px;
@@ -183,6 +186,11 @@ body {
     font-size: 1.1rem;
 }
 
+.profile__description {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+
+}
 /* Блок about */
 .about {
     background: var(--color-background);
@@ -230,56 +238,95 @@ body {
     text-align: center;
 }
 
-/* Блок skill с модификаторами */
 .skill {
-    padding: var(--space-md);
-    border-radius: var(--radius);
-    color: var(--color-text-inverse);
-    font-weight: bold;
-    transition: transform 0.3s;
+    display: grid;
+    place-items: center;
+
 }
 
-.skill:hover {
-    transform: translateY(-3px);
+.skill__label {
+    min-width: 60px;
+    font-weight: bold;
 }
+
+.skill__progress {
+    width: 100%;
+    border-radius: var(--radius-progress);
+    overflow: hidden;
+}
+
+.skill__progress::-webkit-progress-bar {
+    background-color: var(--color-progress);
+}
+
+.skill__progress--html::-webkit-progress-value {
+    background: #e34c26; /* HTML оранжевый */
+}
+
+.skill__progress--css::-webkit-progress-value {
+    background: #264de4; /* CSS синий */
+}
+
+.skill__progress--js::-webkit-progress-value {
+    background: #f0db4f; /* JS желтый */
+}
+
+.skill__progress--c::-webkit-progress-value {
+    background: #9b4f96; /* C# фиолетовый */
+}
+
+
 
 
 /* Блок experience */
-.experience__title {
+.projects__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
     font-size: 1.5rem;
+    text-align: center;
 }
 
-.experience__list {
+.projects__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
 }
 
 /* Блок experience-card */
-.experience-card {
+.project__card {
     background: var(--color-background);
     padding: var(--space-lg);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border-left: 4px solid var(--color-accent);
-    transition: transform 0.3s;
-    transition: background-color 0.5s ease, color 0.5s ease;
-
+    transition: transform 0.3s, background-color 0.5s ease, color 0.5s ease;
 }
 
-.experience-card:hover {
-    transform: translateY(-5px);
+.project__card:hover {
+    transform: translateY(-3px);
 }
 
-.experience-card__title {
+.project__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
 }
-
+.project__image {
+    height: 150px; 
+    object-fit: cover;
+}
 .experience-card__desc {
     color: var(--color-text-secondary);
+}
+.profile__button {
+    border: none;
+    background-color: var(--color-surface);
+}
+
+.profile__link {
+    text-decoration: none;
+    color: var(--color-text-primary);
 }
 
 /* Блок footer */
@@ -354,3 +401,20 @@ body {
     flex: 1;
     margin-bottom: 0;
 }
+
+
+/* Показ ошибки */
+.error-message {
+    color: var(--color-error);
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+input.error-border,
+textarea.error-border,
+select.error-border {
+    border: 2px solid var(--color-error);
+    box-shadow: 0 0 5px var(--color-error);
+}
+
