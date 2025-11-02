@@ -38,22 +38,67 @@
         <main class="main">
             <section class="project-page">
                 <h2 class="project-page__title">Мои проекты</h2>
-
                 <div class="project-page__filter">
-                    
+                    <button class="button button_all" data-filter="all">Всё</button>
+                    <button class="button button_html" data-filter="html">html</button>
+                    <button class="button button_js" data-filter="js">js</button>
+                    <button class="button button_react" data-filter="react">react</button>
                 </div>
                 <div class="project-page__list">
+                    <div class="project-page__card html" data-project="project1">
+                        <img class="project-page__image" src="../images/project1.jpg">
+                        <div class="project-page__body">
+                            <h3 class="project-page__card-title">Сайт визитка</h3>
+                            <p class="project-page__description">
+                                Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-page__card js" data-project="project2">
+                        <img class="project-page__image" src="../images/project2.png">
+                        <div class="project-page__body">
+                            <h3 class="project-page__card-title">Todo приложение</h3>
+                            <p class="project-page__description">
+                                Приложение для управления задачами с использованием JavaScript.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="project-page__card react" data-project="project3">
+                        <img class="project-page__image" src="../images/project3.png">
+                        <div class="project-page__body">
+                            <h3 class="project-page__card-title">Интернет магазин</h3>
+                            <p class="project-page__description">
+                                Прототип интернет-магазина с корзиной товаров и фильтрацией.
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
             </section>
-        
+
         </main>
 
         <footer class="footer">
             <p class="footer__text">&copy; 2025 Все права защищены.</p>
         </footer>
 
+        <dialog id="projectModal">
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="" class="modal-image">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="modal-links">
+                    <a id="modalCodeLink" href="" target="_blank" class="modal-link">📁 Код проекта</a>
+                    <a id="modalDemoLink" href="" target="_blank" class="modal-link">🌐 Демо</a>
+                </div>
+                <button id="close" class="modal-close">Закрыть</button>
+            </div>
+        </dialog>
 
     </div>
+    <script src="../scripts/filter.js"></script>
+    <script src="../scripts/project.js"></script>
 </body>
+
 </html>
