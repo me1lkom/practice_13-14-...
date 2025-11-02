@@ -11,7 +11,7 @@
 <body>
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="#">
+            <img class="header__logo" src="../images/icon.png">
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
         <nav class="nav">
@@ -30,19 +30,24 @@
                         <a class="nav__link" href="contacts.html">Контакты</a>
                     </li>
                 </ul>
-                <div class="theme-toggle">
+                <!-- <div class="theme-toggle">
                     <button id="themeToggle"><img src="images/icon_theme.png"></button>
-                </div>
+                </div> -->
             </section>
         </nav>
         <main class="main">
             <section class="diary">
                 <h2 class="diary__title">Мой учебный процесс</h2>
                 <section class="diary__task">
+                    <h3 class="diary__task-title">Задачи</h3>
                     <div class="diary__task-list"> 
 
                     </div>
+                    <div class="diary__actions">
+                        <button type="button" class="diary__add-task" onclick="addTask.showModal()">Добавить задачу</button>
+                    </div>
                 </section>
+                
                 <section class="diary__progress">
                     <h3 class="diary__progress-title">Текущие курсы</h3>
                     <div class="diary__progress-bar">
@@ -50,22 +55,19 @@
                             <div class="task">
                                 <label class="task__label">Веб-разработка</label>
                                 <progress class="task__progress task__progress--//" max="100"
-                                    value="60">70%</progress>
+                                    value="60"></progress>
                             </div>
                             <div class="task">
                                 <label class="task__label">JavaScript</label>
                                 <progress class="task__progress task__progress--//" max="100"
-                                    value="67">70%</progress>
+                                    value="67"></progress>
                             </div>
                             <div class="task">
                                 <label class="task__label">React</label>
                                 <progress class="task__progress task__progress--//" max="100"
-                                    value="30">70%</progress>
+                                    value="30"></progress>
                             </div>
                         </div>
-                    </div>
-                    <div class="diary__actions">
-                        <button type="button" class="diary__add-task" onclick="addTask.showModal()">Добавить задачу</button>
                     </div>
                 </section>
             </section>

@@ -1,16 +1,16 @@
-document.getElementById('name').addEventListener('input', validateName);
+document.getElementById('name').addEventListener('input', validateTaskName);
 document.getElementById('task').addEventListener('input', validateTask);
 
 // Валидация имени
-function validateName() {
+function validateTaskName() {
     const nameInput = document.getElementById('name');
     const name = nameInput.value.trim();
     
     // Проверяем: только кириллица и пробелы, минимум 2 символа
-    const nameRegex = /^[а-яёА-ЯЁ\s]{2,}$/;
-    
+    const nameRegex = /^.{2,}$/;
+
     if (!nameRegex.test(name)) {
-        showError(nameInput, 'Имя должно содержать только кириллицу и быть не менее 2 символов');
+        showError(nameInput, 'Название задачи должно содержать не менее 2 символов');
         return false;
     } else {
         clearError(nameInput);
@@ -22,9 +22,9 @@ function validateName() {
 function validateTask() {
     const taskInput = document.getElementById('task');
     const task = taskInput.value.trim();
-    
-    if (task.length < 10) {
-        showError(taskInput, 'Сообщение должно содержать минимум 10 символов');
+
+    if (task.length < 5 || task.length > 70) {
+        showError(taskInput, 'Сообщение должно содержать от 5 до 70');
         return false;
     } else {
         clearError(taskInput);
@@ -34,12 +34,17 @@ function validateTask() {
 
 // Обработка ошибки
 function showError(input, message) {
-    input.classList.add('error-border');
+    input.style.borderColor = '#dc3545';
+    input.style.boxShadow = '0 0 5px rgba(220, 53, 69, 0.3)';
     
     let errorElement = input.parentElement.querySelector('.error-message');
     if (!errorElement) {
         errorElement = document.createElement('span');
         errorElement.className = 'error-message';
+        errorElement.style.color = '#dc3545';
+        errorElement.style.fontSize = '12px';
+        errorElement.style.marginTop = '5px';
+        errorElement.style.display = 'block';
         input.parentElement.appendChild(errorElement);
     }
     errorElement.textContent = message;
@@ -47,10 +52,9 @@ function showError(input, message) {
 
 
 function clearError(input) {
-    // Убираем классы
-    input.classList.remove('error-border');
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
     
-    // Скрываем текст ошибки
     const errorElement = input.parentElement.querySelector('.error-message');
     if (errorElement) {
         errorElement.textContent = '';
@@ -71,7 +75,7 @@ document.getElementById('addTask').addEventListener('click', function(event) {
 
 // Общая проверка выполнения валидаций
 function validateForm() {
-    const isNameValid = validateName();
+    const isNameValid = validateTaskName();
     const isTaskValid = validateTask();
     
     return isNameValid && isTaskValid;
@@ -107,7 +111,7 @@ function addTaskToList(taskData) {
 
 
     const taskElement = document.createElement('div');
-    taskElement.className = 'task-item';
+    taskElement.className = 'task__card';
     taskElement.innerHTML = `
         <div class="task-item__header">
             <h4 class="task-item__title">${taskData.name}</h4>

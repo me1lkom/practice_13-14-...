@@ -48,12 +48,17 @@ function validateMassage(){
 
 
 function showError(input, message) {
-    input.classList.add('error-border');
+    input.style.borderColor = '#dc3545';
+    input.style.boxShadow = '0 0 5px rgba(220, 53, 69, 0.3)';
     
     let errorElement = input.parentElement.querySelector('.error-message');
     if (!errorElement) {
         errorElement = document.createElement('span');
         errorElement.className = 'error-message';
+        errorElement.style.color = '#dc3545';
+        errorElement.style.fontSize = '12px';
+        errorElement.style.marginTop = '5px';
+        errorElement.style.display = 'block';
         input.parentElement.appendChild(errorElement);
     }
     errorElement.textContent = message;
@@ -61,10 +66,9 @@ function showError(input, message) {
 
 
 function clearError(input) {
-    // Убираем классы
-    input.classList.remove('error-border');
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
     
-    // Скрываем текст ошибки
     const errorElement = input.parentElement.querySelector('.error-message');
     if (errorElement) {
         errorElement.textContent = '';
