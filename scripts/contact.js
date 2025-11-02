@@ -1,6 +1,6 @@
 document.getElementById('name').addEventListener('input', validateName);
 document.getElementById('email').addEventListener('input', validateEmail);
-document.getElementById('message').addEventListener('input', validateText);
+document.getElementById('message').addEventListener('input', validateMassage);
 
 function validateName(){
     const nameInput = document.getElementById('name');
@@ -77,15 +77,15 @@ function clearError(input) {
 
 
 function validateForm(){
-    const isNameValidate = validateName;
-    const isEmailValidate = validateEmail;
-    const isMassageValidate = validateEmail;
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isMassageValid = validateMassage();
 
-    return isNameValidate && isEmailValidate && isMassageValidate;
+    return isNameValid && isEmailValid && isMassageValid;
 }
 
 function submitForm(){
-    if(!validateForm){
+    if(!validateForm()){
         return;
     }
 
@@ -97,6 +97,7 @@ function submitForm(){
         email: formData.get('email'),
         massage: formData.get('massage')
     }
+    console.log(data)
 
     alert('Ваше сообщение отправлено!');
 
