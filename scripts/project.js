@@ -10,8 +10,8 @@ const projects = {
         title: "Todo приложение",
         description: "Приложение для управления задачами с использованием JavaScript.",
         images: ["../images/project2.png"],
-        codeLink: "https://github.com/..",
-        demoLink: "https://mysite.com"  
+        codeLink: "#",
+        demoLink: "#"  
     },
     project3: {
         title: "Интернет магазин",
