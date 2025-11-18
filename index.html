@@ -14,30 +14,26 @@
 
         <header class="header">
 
-            <img src="images/icon@1x.png" srcset="images/icon@1x.svg 1x, images/icon@2x.svg 2x" alt="Иконка с поддержкой Retina" class="header__logo">
+            <img src="images/icon@1x.png" srcset="images/icon@1x.svg 1x, images/icon@2x.svg 2x"
+                alt="Иконка с поддержкой Retina" class="header__logo">
 
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
-        <nav class="nav">
-            <section class="nav__container">
-                <ul class="nav__list">
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="index.html">Главная</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="pages/projects.html">Проекты</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="pages/diary.html">Дневник</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="pages/contacts.html">Контакты</a>
-                    </li>
-                </ul>
-                <!-- <div class="theme-toggle">
-                    <button id="themeToggle"><img src="images/icon_theme.png"></button>
-                </div> -->
-            </section>
+        <nav aria-label="Основная навигация" class="nav">
+            <ul class="nav__list">
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="index.html" aria-current="page">Главная</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="pages/projects.html">Проекты</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="pages/diary.html">Дневник</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                </li>
+            </ul>
         </nav>
         <main id="main" class="main">
 
@@ -45,10 +41,15 @@
                 <div class="profile__card">
                     <figure class="hero__image">
                         <picture>
-                            <source type="image/avif" srcset="images/hero-150.avif 150w, images/hero-200.avif 200w, images/hero-300.avif 300w" sizes="200px">
-                            <source type="image/webp" srcset="images/hero-150.webp 150w, images/hero-200.webp 200w, images/hero-300.webp 300w" sizes="200px">
-                            <img class="profile__photo" src="images/hero-200.jpg" srcset="images/hero-150.jpg 150w, images/hero-200.jpg 200w, images/hero-300.jpg 300w" 
-                            sizes="200px" width="200" height="200" alt="Портрет студента" fetchpriority="high">
+                            <source type="image/avif"
+                                srcset="images/hero-150.avif 150w, images/hero-200.avif 200w, images/hero-300.avif 300w"
+                                sizes="200px">
+                            <source type="image/webp"
+                                srcset="images/hero-150.webp 150w, images/hero-200.webp 200w, images/hero-300.webp 300w"
+                                sizes="200px">
+                            <img class="profile__photo" src="images/hero-200.jpg"
+                                srcset="images/hero-150.jpg 150w, images/hero-200.jpg 200w, images/hero-300.jpg 300w"
+                                sizes="200px" width="200" height="200" alt="Портрет студента" fetchpriority="high">
                         </picture>
                     </figure>
                     <div class="profile__info">
@@ -56,7 +57,7 @@
                         <p class="profile__group">ЭФБО-07-24</p> -->
 
                         <p class="profile__description"> Привет! Я студент группы ЭФБО-07-24.</p>
-                        
+
                         <a class="profile__link" href="assets/resume.docx" download>Скачать резюме</a>
                     </div>
                 </div>
@@ -92,10 +93,16 @@
 
                         <div class="project-card">
                             <picture>
-                                <source type="image/avif" srcset="images/project1-300.avif 300w, images/project1-450.avif 450w, images/project1-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <source type="image/webp" srcset="images/project1-300.webp 300w, images/project1-450.webp 450w, images/project1-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <img class="project__image1" src="images/project1-300.jpg" srcset="images/project1-300.jpg 300w, images/project1-450.jpg 450w, images/project1-600.jpg 600w" 
-                                sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                                <source type="image/avif"
+                                    srcset="images/project1-300.avif 300w, images/project1-450.avif 450w, images/project1-600.avif 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <source type="image/webp"
+                                    srcset="images/project1-300.webp 300w, images/project1-450.webp 450w, images/project1-600.webp 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <img class="project__image1" src="images/project1-300.jpg"
+                                    srcset="images/project1-300.jpg 300w, images/project1-450.jpg 450w, images/project1-600.jpg 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200"
+                                    alt="Скриншот сайта-визитки" loading="lazy">
                             </picture>
                             <div class="project__body">
                                 <div class="project-card__title">
@@ -108,10 +115,16 @@
                         </div>
                         <div class="project-card">
                             <picture>
-                                <source type="image/avif" srcset="images/project2-300.avif 300w, images/project2-450.avif 450w, images/project2-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <source type="image/webp" srcset="images/project2-300.webp 300w, images/project2-450.webp 450w, images/project2-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <img class="project__image2" src="images/project2-300.jpg" srcset="images/project2-300.jpg 300w, images/project2-450.jpg 450w, images/project2-600.jpg 600w" 
-                                sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                                <source type="image/avif"
+                                    srcset="images/project2-300.avif 300w, images/project2-450.avif 450w, images/project2-600.avif 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <source type="image/webp"
+                                    srcset="images/project2-300.webp 300w, images/project2-450.webp 450w, images/project2-600.webp 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <img class="project__image2" src="images/project2-300.jpg"
+                                    srcset="images/project2-300.jpg 300w, images/project2-450.jpg 450w, images/project2-600.jpg 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200"
+                                    alt="Скриншот сайта-визитки" loading="lazy">
                             </picture>
                             <div class="project__body">
                                 <div class="project-card__title">
@@ -124,10 +137,16 @@
                         </div>
                         <div class="project-card">
                             <picture>
-                                <source type="image/avif" srcset="images/project3-300.avif 300w, images/project3-450.avif 450w, images/project3-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <source type="image/webp" srcset="images/project3-300.webp 300w, images/project3-450.webp 450w, images/project3-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
-                                <img class="project__image3" src="images/project3-300.jpg" srcset="images/project3-300.jpg 300w, images/project3-450.jpg 450w, images/project3-600.jpg 600w" 
-                                sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                                <source type="image/avif"
+                                    srcset="images/project3-300.avif 300w, images/project3-450.avif 450w, images/project3-600.avif 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <source type="image/webp"
+                                    srcset="images/project3-300.webp 300w, images/project3-450.webp 450w, images/project3-600.webp 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                <img class="project__image3" src="images/project3-300.jpg"
+                                    srcset="images/project3-300.jpg 300w, images/project3-450.jpg 450w, images/project3-600.jpg 600w"
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200"
+                                    alt="Скриншот сайта-визитки" loading="lazy">
                             </picture>
                             <div class="project__body">
                                 <div class="project-card__title">
@@ -138,7 +157,7 @@
                                 </p>
                             </div>
                         </div>
-                    
+
                     </div>
                 </div>
             </section>

@@ -15,26 +15,21 @@
             <img src="../images/icon@1x.png" srcset="../images/icon@1x.svg 1x, ../images/icon@2x.svg 2x" alt="Иконка с поддержкой Retina" class="header__logo">
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
-        <nav class="nav">
-            <section class="nav__container">
-                <ul class="nav__list">
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="../index.html">Главная</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="projects.html">Проекты</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="diary.html">Дневник</a>
-                    </li>
-                    <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="contacts.html">Контакты</a>
-                    </li>
-                </ul>
-                <!-- <div class="theme-toggle">                
-                        <button id="themeToggle"><img src="images/icon_theme.png"></button>
-                </div> -->
-            </section>
+        <nav aria-label="Основная навигация" class="nav">
+            <ul class="nav__list">
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
         </nav>
         <main id="main" class="main">
             <section class="project-page">
@@ -107,7 +102,7 @@
                 <h2 id="modalTitle"></h2>
                 <p id="modalDescription"></p>
                 <div class="modal-links">
-                    <a id="modalCodeLink" href="" target="_blank" class="modal-link">📁 Исходный код</a>
+                    <a id="modalCodeLink" href="" target="_blank" class="modal-link"><span aria-hidden="true">📁</span> Исходный код</a>
                     <a id="modalDemoLink" href="" target="_blank" class="modal-link">🌐 Живой сайт</a>
                 </div>
                 <button id="close" class="modal-close">Закрыть</button>
