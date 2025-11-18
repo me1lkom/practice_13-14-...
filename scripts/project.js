@@ -11,48 +11,86 @@ const projects = {
         description: "Приложение для управления задачами с использованием JavaScript.",
         images: ["../images/project2-900.jpg"],
         codeLink: "#",
-        demoLink: "#"  
+        demoLink: "#"
     },
     project3: {
-        title: "Интернет магазин",
+        title: "Интернет магазин", 
         description: "Прототип интернет-магазина с корзиной товаров и фильтрацией.",
         images: ["../images/project3-900.jpg"],
         codeLink: "https://github.com/me1lkom/project-2",
-        demoLink: "https://me1lkom.github.io/project-2/pages/goods_v1.html"  
+        demoLink: "https://me1lkom.github.io/project-2/pages/goods_v1.html"
     }
 }
 
-// Находим все карточки
 const projectCards = document.querySelectorAll('.project-page__card');
+const projectModal = document.getElementById('projectModal');
+let previousActiveElement = null;
 
-// Добавляем обработчики
-projectCards.forEach(card => {
+// Функция открытия модалки
+function openModal(projectId) {
     previousActiveElement = document.activeElement;
+    const project = projects[projectId];
 
+    if (!project) return;
+
+    document.getElementById('modalImage').src = project.images[0];
+    document.getElementById('modalImage').alt = `Скриншот проекта ${project.title}`;
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalDescription').textContent = project.description;
+    document.getElementById('modalCodeLink').href = project.codeLink;
+    document.getElementById('modalDemoLink').href = project.demoLink;
+
+    projectModal.showModal();
+}
+
+// Функция закрытия модалки  
+function closeModal() {
+    projectModal.close();
+    if (previousActiveElement) {
+        previousActiveElement.focus();
+    }
+}
+
+// Обработчики для карточек
+projectCards.forEach(card => {
     card.addEventListener('click', function() {
-        const projectId = this.dataset.project;
-        const project = projects[projectId];
-        
-        // Заполняем модалку данными
-        document.getElementById('modalImage').src = project.images[0];
-        document.getElementById('modalTitle').textContent = project.title;
-        document.getElementById('modalDescription').textContent = project.description;
-        document.getElementById('modalCodeLink').href = project.codeLink;
-        document.getElementById('modalDemoLink').href = project.demoLink;
-        
-        // Показываем модалку
-        document.getElementById('projectModal').showModal();
-
-        modal.focus();
-        document.querySelectorAll('body > *:not(.modal):not(.overlay)').forEach(el => el.setAttribute('aria-hidden', 'true'));
+        openModal(this.dataset.project);
     });
 });
 
-document.getElementById('close').addEventListener('click', function() {
-    
-    projectModal.close();
-    projectModal.reset();
-    if (previousActiveElement) {
-        previousActiveElement.focus();
+// Закрытие модалки
+document.getElementById('close').addEventListener('click', closeModal);
+
+// Закрытие по Escape
+projectModal.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeModal();
+});
+
+// Закрытие по клику на backdrop
+projectModal.addEventListener('click', (event) => {
+    if (event.target === projectModal) {
+        closeModal();
+    }
+});
+
+// Tab-циклинг внутри модалки
+projectModal.addEventListener('keydown', function(event) {
+    if (event.key === 'Tab') {
+        const focusableElements = projectModal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (focusableElements.length === 0) return;
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus();
+        }
     }
 });

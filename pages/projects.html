@@ -96,7 +96,7 @@
             <p class="footer__text">&copy; 2025 Все права защищены.</p>
         </footer>
 
-        <dialog id="projectModal">
+        <dialog id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
             <div class="modal-content">
                 <img id="modalImage" src="" alt="" class="modal-image">
                 <h2 id="modalTitle"></h2>
@@ -105,7 +105,7 @@
                     <a id="modalCodeLink" href="" target="_blank" class="modal-link" aria-label="Ссылка на исходный код"><span aria-hidden="true">📁</span>Исходный код</a>
                     <a id="modalDemoLink" href="" target="_blank" class="modal-link" aria-label="Ссылка на живой сайт"><span aria-hidden="true">🌐</span>Живой сайт</a>
                 </div>
-                <button id="close" class="modal-close" aria-label="Закрыть диалоговое окно">Закрыть</button>
+                <button id="close" class="modal-close" aria-label="Закрыть диалоговое окно" autofocus>Закрыть</button>
             </div>
         </dialog>
 
