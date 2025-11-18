@@ -25,6 +25,9 @@ function validateEmail(){
 
     if (!emailRegex.test(email)) {
         showError(emailInput, 'Введите корректный email (например: ivanov@mail.ru)');
+        emailField.setAttribute('aria-invalid', 'true');
+        emailError.textContent = 'Некорректный email';
+        emailError.classList.remove('visually-hidden');
         return false;
     } else {
         clearError(emailInput);
@@ -45,7 +48,9 @@ function validateMassage(){
     }
 }
 
-
+document.querySelectorAll('input, textarea').forEach(field => {
+    field.setAttribute('aria-invalid', 'false');
+});
 
 function showError(input, message) {
     input.style.borderColor = '#dc3545';
@@ -63,9 +68,11 @@ function showError(input, message) {
     }
     errorElement.textContent = message;
 
+    input.setAttribute('aria-invalid', 'true');
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
         screenReaderError.textContent = message;
+        screenReaderError.classList.remove('visually-hidden');
     }
 }
 
@@ -79,9 +86,11 @@ function clearError(input) {
         errorElement.textContent = '';
     }
 
+    input.setAttribute('aria-invalid', 'false');
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
         screenReaderError.textContent = '';
+        screenReaderError.classList.add('visually-hidden');
     }
 }
 
@@ -113,5 +122,5 @@ function submitForm(){
 
     form.reset();
 
-    clearAllErrors();
+    clearError();
 }

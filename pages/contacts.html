@@ -39,9 +39,11 @@
                     <div class="contacts__form">
                         <form id="feedbackForm" method="dialog">
                             <div class="contacts__field">
-                                <label class="contacts__label" for="name">Имя</label>
+                                <label class="contacts__label" for="name">
+                                    Имя<span class="required" aria-hidden="true">*</span>
+                                </label>
                                 <input type="text" id="name" name="name" required placeholder="Введите ваше имя"
-                                    aria-describedby="name-hint name-error">
+                                    aria-describedby="name-hint name-error" aria-required="true" aria-invalid="false">
                                 <small id="name-hint" class="visually-hidden">
                                     Укажите ваше настоящее имя для обращения, имя должно быть больше двух символов и на кирилице 
                                 </small>
@@ -49,9 +51,12 @@
                             </div>
 
                             <div class="contacts__field">
-                                <label class="contacts__label" for="email">Электронная почта</label>
+                                <label class="contacts__label" for="email">
+                                    Электронная почта <span class="required" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">обязательное поле</span>
+                                </label>
                                 <input type="email" id="email" name="email" required placeholder="example@mail.ru"
-                                    aria-describedby="email-hint email-error">
+                                    aria-describedby="email-hint email-error" aria-required="true" aria-invalid="false">
                                 <small id="email-hint" class="visually-hidden">
                                     Мы отправим ответ на указанный email
                                 </small>
@@ -59,9 +64,11 @@
                             </div>
 
                             <div class="contacts__field">
-                                <label class="contacts__label" for="message">Текст обращения</label>
+                                <label class="contacts__label" for="message">
+                                    Текст обращения<span class="required" aria-hidden="true">*</span>
+                                </label>
                                 <textarea id="message" name="message" required placeholder="Напишите свой вопрос..."
-                                    aria-describedby="message-hint message-error"></textarea>
+                                    aria-describedby="message-hint message-error" aria-required="true" aria-invalid="false"></textarea>
                                 <small id="message-hint" class="visually-hidden">
                                     Опишите ваш вопрос или предложение подробно
                                 </small>
