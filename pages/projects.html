@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Сайт визитка</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
     <div class="page">
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a>
         <header class="header">
-            <img class="header__logo" src="../images/icon.png">
+            <img src="../images/icon@1x.png" srcset="../images/icon@1x.svg 1x, ../images/icon@2x.svg 2x" alt="Иконка с поддержкой Retina" class="header__logo">
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
         <nav class="nav">
@@ -35,7 +36,7 @@
                 </div> -->
             </section>
         </nav>
-        <main class="main">
+        <main id="main" class="main">
             <section class="project-page">
                 <h2 class="project-page__title">Мои проекты</h2>
                 <div class="project-page__filter">
@@ -44,36 +45,53 @@
                     <button class="button button_js" data-filter="js">js</button>
                     <button class="button button_react" data-filter="react">react</button>
                 </div>
-                <div class="project-page__list">
-                    <div class="project-page__card html" data-project="project1">
-                        <img class="project-page__image" src="../images/project1.jpg">
-                        <div class="project-page__body">
-                            <h3 class="project-page__card-title">Сайт визитка</h3>
-                            <p class="project-page__description">
-                                Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
-                            </p>
+                <div class="project-page-preview">
+                    <div class="project-page-preview__grid">
+                        <div class="project-page__card html" data-project="project1">
+                            <picture>
+                                    <source type="image/avif" srcset="../images/project1-300.avif 300w, ../images/project1-450.avif 450w, ../images/project1-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <source type="image/webp" srcset="../images/project1-300.webp 300w, ../images/project1-450.webp 450w, ../images/project1-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <img class="project-page__image" src="../images/project1-300.jpg" srcset="../images/project1-300.jpg 300w, ../images/project1-450.jpg 450w, ../images/project1-600.jpg 600w" 
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                            </picture>
+                            <div class="project-page__body">
+                                <h3 class="project-page__card-title">Сайт визитка</h3>
+                                <p class="project-page__description">
+                                    Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-page__card js" data-project="project2">
-                        <img class="project-page__image" src="../images/project2.png">
-                        <div class="project-page__body">
-                            <h3 class="project-page__card-title">Todo приложение</h3>
-                            <p class="project-page__description">
-                                Приложение для управления задачами с использованием JavaScript.
-                            </p>
+                        <div class="project-page__card js" data-project="project2">
+                            <picture>
+                                    <source type="image/avif" srcset="../images/project2-300.avif 300w, ../images/project2-450.avif 450w, ../images/project2-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <source type="image/webp" srcset="../images/project2-300.webp 300w, ../images/project2-450.webp 450w, ../images/project2-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <img class="project-page__image" src="../images/project2-300.jpg" srcset="../images/project2-300.jpg 300w, ../images/project2-450.jpg 450w, ../images/project2-600.jpg 600w" 
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                            </picture>                        
+                            <div class="project-page__body">
+                                <h3 class="project-page__card-title">Todo приложение</h3>
+                                <p class="project-page__description">
+                                    Приложение для управления задачами с использованием JavaScript.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="project-page__card react" data-project="project3">
-                        <img class="project-page__image" src="../images/project3.png">
-                        <div class="project-page__body">
-                            <h3 class="project-page__card-title">Интернет магазин</h3>
-                            <p class="project-page__description">
-                                Прототип интернет-магазина с корзиной товаров и фильтрацией.
-                            </p>
+                        <div class="project-page__card react" data-project="project3">
+                            <picture>
+                                    <source type="image/avif" srcset="../images/project3-300.avif 300w, ../images/project3-450.avif 450w, ../images/project3-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <source type="image/webp" srcset="../images/project3-300.webp 300w, ../images/project3-450.webp 450w, ../images/project3-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
+                                    <img class="project-page__image" src="../images/project3-300.jpg" srcset="../images/project3-300.jpg 300w, ../images/project3-450.jpg 450w, ../images/project3-600.jpg 600w" 
+                                    sizes="(max-width: 768px) calc(100vw - 2rem), 22rem" width="450" height="200" alt="Скриншот сайта-визитки" loading="lazy">
+                            </picture>                        
+                            <div class="project-page__body">
+                                <h3 class="project-page__card-title">Интернет магазин</h3>
+                                <p class="project-page__description">
+                                    Прототип интернет-магазина с корзиной товаров и фильтрацией.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </section>
 

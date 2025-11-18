@@ -1,4 +1,4 @@
-function myapp() {
+function filter() {
   const buttons = document.querySelectorAll(".button");
   const cards = document.querySelectorAll(".project-page__card");
 
@@ -23,4 +23,4 @@ function myapp() {
   });
 }
 
-myapp();
+filter();

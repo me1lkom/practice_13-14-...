@@ -2,21 +2,21 @@ const projects = {
     project1: {
         title: "Сайт-визитка",
         description: "Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.",
-        images: ["../images/project1.jpg"],
+        images: ["../images/project1-900.jpg"],
         codeLink: "https://github.com/me1lkom/project-2",
         demoLink: "https://me1lkom.github.io/project-2/index_v1.html"
     },
     project2: {
         title: "Todo приложение",
         description: "Приложение для управления задачами с использованием JavaScript.",
-        images: ["../images/project2.png"],
+        images: ["../images/project2-900.jpg"],
         codeLink: "#",
         demoLink: "#"  
     },
     project3: {
         title: "Интернет магазин",
         description: "Прототип интернет-магазина с корзиной товаров и фильтрацией.",
-        images: ["../images/project3.png"],
+        images: ["../images/project3-900.jpg"],
         codeLink: "https://github.com/me1lkom/project-2",
         demoLink: "https://me1lkom.github.io/project-2/pages/goods_v1.html"  
     }

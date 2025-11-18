@@ -48,6 +48,11 @@ function showError(input, message) {
         input.parentElement.appendChild(errorElement);
     }
     errorElement.textContent = message;
+
+    const screenReaderError = document.getElementById(input.id + '-error');
+    if (screenReaderError) {
+        screenReaderError.textContent = message;
+    }
 }
 
 
@@ -58,6 +63,11 @@ function clearError(input) {
     const errorElement = input.parentElement.querySelector('.error-message');
     if (errorElement) {
         errorElement.textContent = '';
+    }
+
+    const screenReaderError = document.getElementById(input.id + '-error');
+    if (screenReaderError) {
+        screenReaderError.textContent = '';
     }
 }
 // Очистка ошибок при закрытии модалки

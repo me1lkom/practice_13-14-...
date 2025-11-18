@@ -13,7 +13,8 @@
     --color-progress: #bebebe;
 
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    --radius: 10px;
+    --radius: .75rem;
+    ;
     --radius-progress: 6px;
     --radius-modal: 12px;
     --space-sm: 10px;
@@ -40,6 +41,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -56,8 +62,54 @@ body {
     flex-direction: column;
     margin: 0 auto;
     background: var(--color-background);
-    min-height: 100vh;
     transition: background-color 0.5s ease, color 0.5s ease;
+    min-height: 100vh;
+    /* фолбэк для старых браузеров (может не учитывать панели на мобилках) */
+    min-height: 100svh;
+    /* стабильный минимум: высота экрана с панелями (всегда влезет) */
+    min-height: 100dvh;
+    /* на новых браузерах — актуальная видимая высота, обновляется при скролле */
+}
+
+/*   */
+.skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 10000;
+    padding: .5rem .75rem;
+    background: #111;
+    color: #fff;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    inset-block-start: 1rem;
+}
+
+:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+a,
+button,
+input,
+textarea {
+    outline-offset: 2px;
+}
+
+/* Крупные цели на устройствах с pointer:coarse */
+@media (pointer: coarse) {
+
+    a,
+    button,
+    .nav__link {
+        min-height: 44px;
+        padding: .75rem 1rem;
+    }
 }
 
 /* Блок header */
@@ -69,17 +121,30 @@ body {
 }
 
 .header__title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
 }
 
 .header__logo {
     width: 24px;
     height: 24px;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Блок nav */
 .nav {
+    position: sticky;
+    top: 0;
+    padding-block-start: calc(.75rem + env(safe-area-inset-top));
+    padding-block-end: .75rem;
+    padding-inline-start: calc(var(--space-md, 1rem) + env(safe-area-insetleft));
+    padding-inline-end: calc(var(--space-md, 1rem) + env(safe-area-insetright));
+    color: #fff;
+    z-index: 100;
+    isolation: isolate;
+    box-shadow: var(--shadow);
     background-color: var(--color-navigation);
+
 }
 
 .nav__container {
@@ -138,6 +203,7 @@ body {
     color: var(--color-text-base);
     text-decoration: none;
     transition: background-color 0.3s;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
 }
 
 .nav__link:hover {
@@ -166,7 +232,8 @@ body {
 }
 
 .profile__card {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column dense;
     align-items: center;
     gap: var(--space-lg);
     background: var(--color-background);
@@ -176,11 +243,21 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+@media (max-width: 550px) {
+    .profile__card {
+        grid-auto-flow: row dense;
+        align-items: center;
+    }
+}
+
 .profile__photo {
-    width: 200px;
-    height: 200px;
-    border-radius: 3%;
+    inline-size: 200px;
+    /* или: clamp(150px, 22vw, 200px); тогда sizes меняем соответствующе */
+    block-size: auto;
+    object-fit: cover;
     border: 3px solid var(--color-accent);
+    height: auto;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .profile__name {
@@ -195,9 +272,22 @@ body {
 }
 
 .profile__description {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1rem + 0.5vw, 1.1rem);
     color: var(--color-text-primary);
+}
 
+.profile__link {
+    font-size: clamp(0.9rem, 1rem + 0.5vw, 1.1rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 24px;
+    background: var(--color-primary);
+    color: var(--color-text-base);
+    text-decoration: none;
+    border-radius: var(--radius);
+    text-decoration: none;
 }
 
 /* Блок about */
@@ -234,7 +324,7 @@ body {
 .skills__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 1.1rem + 1vw, 1.75rem);
     text-align: center;
 }
 
@@ -288,57 +378,102 @@ body {
     /* C# фиолетовый */
 }
 
-
-
-
 /* Блок projects */
-.projects__title {
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-md);
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.projects__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 20px 0;
-    padding: 0;
-    text-align: center;
-}
-
-/* Блок project__card */
-.project__card {
-    background: var(--color-background);
-    padding: var(--space-lg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    transition: transform 0.3s, background-color 0.5s ease, color 0.5s ease;
-}
-
-.project__card:hover {
-    transform: translateY(-3px);
-}
 
 .project__title {
     color: var(--color-text-primary);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    font-size: clamp(1.25rem, 1.1rem + 1vw, 1.75rem);
+    text-align: center;
 }
 
-.project__image {
-    max-width: 100%;
-    height: auto;
+.project-preview {
+    margin-block: var(--space-lg, 3rem);
+    container-type: inline-size;
+    container-name: project-area;
 }
 
-.profile__button {
-    border: none;
-    background-color: var(--color-surface);
+.project-preview__grid {
+    display: grid;
+    /* включаем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
+    /* максимум 22rem */
+    gap: var(--space-lg, 1.5rem);
+    /* промежутки между колонками/строками */
+    justify-content: center;
+    /* центрируем сетку, когда есть свободное место */
 }
 
-.profile__link {
-    text-decoration: none;
+/* Блок project__card */
+.project-card {
+    background: var(--color-background);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, background-color 0.5s ease, color 0.5s ease;
+    min-width: 0;
+    /* разрешаем контенту ужиматься */
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+}
+
+.project-card__title {
+    font-size: clamp(1rem, 1.1rem + 1vw, 1.2rem);
+}
+
+.project-card__description {
+    font-size: clamp(0.9rem, 1rem + 0.1vw, 1.1rem);
+}
+
+.project-card__title,
+.project-card__description {
+    overflow-wrap: anywhere;
     color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-primary);
+
+}
+
+.project__image1 {
+    width: 100%;
+    height: 200px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+}
+
+.project__image2 {
+    width: 100%;
+    height: 200px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+        object-fit: cover;
+
+}
+
+.project__image3 {
+    width: 100%;
+    height: 200px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;   
+    object-fit: fill;
+}
+
+@container project-area (min-width: 640px) {
+    .project-preview__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@container project-area (min-width: 960px) {
+    .project-preview__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Блок footer */
@@ -349,13 +484,16 @@ body {
     padding: var(--space-md);
     margin-top: var(--space-lg);
     min-height: 100%;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    /* Safe-area в футере (жестовая панель) */
+}
+.footer__text {
+    font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+
 }
 
 /* ====== Страница contscts.htlm ====== */
 .contacts {
-    background: var(--color-background);
-    padding: var(--space-lg);
-    border-radius: var(--radius);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -363,12 +501,13 @@ body {
     display: flex;
     justify-content: space-around;
     gap: var(--space-lg);
+    flex-wrap: wrap;
 }
 
 .contacts__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw + 0.5rem, 2rem);
     text-align: center;
 }
 
@@ -392,7 +531,8 @@ body {
     font-weight: bold;
 }
 
-.contacts__input, .contacts__textarea {
+.contacts__input,
+.contacts__textarea {
     display: block;
     width: 100%;
     padding: 0.75rem;
@@ -408,13 +548,19 @@ body {
     box-shadow: var(--shadow);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
+.contacts-into__title{
+    font-size: clamp(1.25rem, 0.9rem + 1.5vw, 1.75rem);
+}
 
-.contacts__form, .contacts__info {
+
+.contacts__form,
+.contacts__info {
     flex: 1;
     margin-bottom: 0;
 }
 
-.contacts__field input, .contacts__field textarea {
+.contacts__field input,
+.contacts__field textarea {
     display: block;
     width: 100%;
     padding: 0.75rem;
@@ -426,7 +572,8 @@ body {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contacts__field input:focus, .contacts__field textarea:focus {
+.contacts__field input:focus,
+.contacts__field textarea:focus {
     outline: none;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
@@ -462,7 +609,7 @@ body {
     transform: translateY(0);
 }
 
-.contacts__list p {
+.contacts-info__list p {
     margin-top: var(--space-md);
     font-size: 15px;
 }
@@ -488,7 +635,7 @@ select.error-border {
 .diary__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw + 0.5rem, 2rem);
     text-align: center;
 }
 
@@ -503,24 +650,35 @@ select.error-border {
 .diary__task-title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
+    font-size: clamp(0.9rem, 1.1rem + 0.5vw, 1.3rem);
+}
+
+.diary-preview {
+    margin-block: var(--space-lg, 3rem);
+    container-type: inline-size;
+    container-name: diary-area;
 }
 
 .diary__task-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 14rem));
     gap: 15px;
     margin: 20px 0;
     padding: 0;
 }
 
 .task-item__description {
-    max-height: 100px;
+    max-height: 170px;
     word-wrap: break-word;
+    overflow-y: auto;
 }
 
 .task__card {
-    max-width: 180px;
+    background: var(--color-background);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+    min-width: 0;
     word-wrap: break-word;
     word-break: break-word;
 }
@@ -538,10 +696,10 @@ select.error-border {
     background: var(--color-error);
     color: var(--color-text-base);
     border: none;
-    padding: 6px 12px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
     border-radius: var(--radius);
     cursor: pointer;
-    font-size: 12px;
     font-weight: 500;
     transition: all 0.3s ease;
     align-self: flex-start;
@@ -580,6 +738,19 @@ select.error-border {
     transform: translateY(0);
 }
 
+
+@container diary-area (min-width: 640px) {
+    .diary__task-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@container diary-area (min-width: 960px) {
+    .diary__task-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
 /* progress */
 .diary__progress {
     background: var(--color-background);
@@ -592,6 +763,8 @@ select.error-border {
 .diary__progress-title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
+    font-size: clamp(0.9rem, 1.1rem + 0.5vw, 1.3rem);
+
 }
 
 .task__progress {
@@ -718,7 +891,7 @@ select.error-border {
 .project-page__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw + 0.5rem, 2rem);
     text-align: center;
 }
 
@@ -762,16 +935,23 @@ select.error-border {
     background-color: #182f0f;
 }
 
-.project-page__list {
+.project-page-preview{
+    container-type: inline-size;
+    container-name: project-page;
+    margin-block: var(--space-lg, 3rem);
+}
+
+.project-page-preview__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
+    gap: var(--space-lg, 1.5rem);
+    justify-content: center;
     text-align: center;
 }
 
 .project-page__card {
     min-width: 0;
-    word-wrap: break-word;    
+    word-wrap: break-word;
     cursor: pointer;
     background: var(--color-background);
     padding: var(--space-lg);
@@ -798,6 +978,17 @@ select.error-border {
     display: none;
 }
 
+@container project-page (min-width: 640px) {
+    .projects-preview__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@container project-page (min-width: 960px) {
+    .projects-preview__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 
 /* Модальное окно проекта */
@@ -827,10 +1018,15 @@ select.error-border {
 .modal-image {
     width: 100%;
     height: 250px;
-    object-fit: cover;
-    border-radius: var(--radius);
+    object-fit: contain;
     margin-bottom: var(--space-md);
-    border: 2px solid var(--color-surface);
+    background: var(--color-background);
+    transition: all 0.3s ease;
+}
+
+.modal-image:hover {
+    transform: scale(1.05);
+
 }
 
 #modalTitle {
@@ -885,4 +1081,59 @@ select.error-border {
 .modal-close:hover {
     background: var(--color-text-secondary);
     color: var(--color-text-base);
+}
+
+/* Видимый фокус уже задан (:focus-visible) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Повышенный контраст (прогрессивно) */
+@media (prefers-contrast: more) {
+
+    .button,
+    .filter {
+        box-shadow: inset 0 0 0 2px #fff;
+    }
+}
+
+/* Уважение к снижению движения */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Плавные поля секций */
+.section,
+.main {
+    padding-inline: clamp(1rem, calc(.5rem + 1vw), 2rem);
+}
+
+/* Кнопки: минимальная зона клика 44px (WCAG) */
+.button {
+    padding-block: max(.5rem, calc((44px - 1em)/2));
+}
+
+/* Full-bleed для геро-блока (если нужен фон на всю ширину) */
+.hero--bleed {
+    margin-inline: calc(50% - 50vw);
+    padding-inline: calc(50vw - 50%);
+}
+
+/* Иконка в поле ввода (если появится поиск) */
+.search__input {
+    --icon: 20px;
+    --gap: .5rem;
+    background: url(images/search.svg) no-repeat left .75rem center / var(-- icon);
+    padding-left: calc(1.5rem + var(--icon) + var(--gap));
 }

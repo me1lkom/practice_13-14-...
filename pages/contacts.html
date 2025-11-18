@@ -3,15 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Сайт визитка</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
     <div class="page">
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
         <header class="header">
-            <img class="header__logo" src="../images/icon.png">
+            <img src="../images/icon@1x.png" srcset="../images/icon@1x.svg 1x, ../images/icon@2x.svg 2x" alt="Иконка с поддержкой Retina" class="header__logo">
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
         <nav class="nav">
@@ -35,12 +37,50 @@
                 </div> -->
             </section>
         </nav>
-        <main class="main">
+        <main id="main" class="main">
             <section class="contacts">
                 <h2 class="contacts__title">Свяжитесь со мной</h2>
                 <div class="contacts__container">
                     <div class="contacts__form">
                         <form id="feedbackForm" method="dialog">
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="name">Имя</label>
+                                <input type="text" id="name" name="name" required placeholder="Введите ваше имя"
+                                    aria-describedby="name-hint name-error">
+                                <small id="name-hint" class="visually-hidden">
+                                    Укажите ваше настоящее имя для обращения, имя должно быть больше двух символов и на кирилице 
+                                </small>
+                                <span id="name-error" class="visually-hidden" role="alert"></span>
+                            </div>
+
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="email">Электронная почта</label>
+                                <input type="email" id="email" name="email" required placeholder="example@mail.ru"
+                                    aria-describedby="email-hint email-error">
+                                <small id="email-hint" class="visually-hidden">
+                                    Мы отправим ответ на указанный email
+                                </small>
+                                <span id="email-error" class="visually-hidden" role="alert"></span>
+                            </div>
+
+                            <div class="contacts__field">
+                                <label class="contacts__label" for="message">Текст обращения</label>
+                                <textarea id="message" name="message" required placeholder="Напишите свой вопрос..."
+                                    aria-describedby="message-hint message-error"></textarea>
+                                <small id="message-hint" class="visually-hidden">
+                                    Опишите ваш вопрос или предложение подробно
+                                </small>
+                                <span id="message-error" class="visually-hidden" role="alert"></span>
+                            </div>
+
+                            <div class="contacts__actions">
+                                <button type="button" class="contacts__submit" onclick="submitForm()">
+                                    Отправить сообщение
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- <form id="feedbackForm" method="dialog">
                             <div class="contacts__field">
                                 <label class="contacts__label" for="name">Имя</label>
                                 <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
@@ -58,11 +98,11 @@
                                 <button type="button" class="contacts__submit" onclick="submitForm()">Отправить
                                     сообщение</button>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                     <section class="contacts__info">
-                        <h3>Контакты</h3>
-                        <div class="contacts__list">
+                        <h3 class="contacts-into__title">Контакты</h3>
+                        <div class="contacts-info__list">
                             <p>📧 leva.gerasimosy@mail.ru</p>
                             <p>📱 GitHub: me1lkom</p>
                             <p>📍 Москва, Россия </p>
@@ -76,7 +116,6 @@
             <p class="footer__text">&copy; 2025 Все права защищены.</p>
         </footer>
     </div>
-
     <script src="../scripts/contact.js"></script>
 </body>
 
