@@ -635,6 +635,10 @@ select.error-border {
 /* ==== Страница diary ==== */
 
 /* task */
+.task__fieldset {
+    border: none;
+}
+
 .diary__title {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);

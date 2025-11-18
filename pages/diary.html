@@ -12,7 +12,8 @@
     <div class="page">
         <a class="skip-link" href="#main">Перейти к основному содержимому</a>
         <header class="header">
-            <img src="../images/icon@1x.png" srcset="../images/icon@1x.svg 1x, ../images/icon@2x.svg 2x" alt="Иконка с поддержкой Retina" class="header__logo">
+            <img src="../images/icon@1x.svg" srcset="../images/icon@1x.svg 1x, ../images/icon@2x.svg 2x"
+                alt="Иконка с поддержкой Retina" class="header__logo">
             <h1 class="header__title">Герасимов Лев</h1>
         </header>
         <nav aria-label="Основная навигация" class="nav">
@@ -37,13 +38,13 @@
                 <section class="diary__task">
                     <h3 class="diary__task-title">Задачи</h3>
                     <div class="diary-preview">
-                        <div class="diary__task-list">
+                        <div class="diary__task-list" aria-live="polite" aria-atomic="false" aria-relevant="additions removals">
 
                         </div>
                     </div>
+                    <div aria-live="polite" aria-atomic="true" id="task-status" class="visually-hidden"></div>
                     <div class="diary__actions">
-                        <button type="button" class="diary__add-task" onclick="addTask.showModal()">Добавить
-                            задачу</button>
+                        <button type="button" class="diary__add-task" onclick="addTask.showModal()">Добавить задачу</button>
                     </div>
                 </section>
 
@@ -79,28 +80,35 @@
                 <h2>Форма добавления новой задачи</h2>
             </div>
             <div class="modal-content">
-                <form id="feedbackForm" method="dialog">
-                    <div class="form-group">
-                        <label for="name">Название задачи</label>
-                        <input type="text" id="name" name="name" required placeholder="Введите название задачи" aria-describedby="name-hint name-error">
-                        <small id="name-hint" class="visually-hidden">
-                            Укажите название задачи, не менее двух символов.
-                        </small>
-                        <span id="name-error" class="visually-hidden" role="alert"></span>
+                <form id="feedbackForm">
+                    <fieldset class="task__fieldset">
+                        <legend class="visually-hidden">Данные о задаче</legend>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="task" >Текст обращения</label>
-                        <textarea id="task" name="task" required placeholder="Написать задачу" aria-describedby="task-hint task-error"></textarea>
-                        <small id="task-hint" class="visually-hidden">
-                            Напишите задачу, от 2 до 70 символов.
-                        </small>
-                        <span id="task-error" class="visually-hidden" role="alert"></span>
-                    </div>
-                    <div class="modal-actions">
-                        <button type="button" class="diary__cancel" id="cancel">Отмена</button>
-                        <button type="button" class="diary__submit" onclick="submitForm()">Отправить</button>
-                    </div>
+                        <div class="form-group">
+                            <label for="name">Название задачи<span class="required" aria-hidden="true">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Введите название задачи"
+                                aria-describedby="name-hint name-error" aria-required="true" aria-invalid="false">
+                            <small id="name-hint" class="visually-hidden">
+                                Укажите название задачи, не менее двух символов.
+                            </small>
+                            <span id="name-error" class="visually-hidden" role="alert"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="task">Текст обращения<span class="required" aria-hidden="true">*</span></label>
+                            <textarea id="task" name="task" required placeholder="Написать задачу"
+                                aria-describedby="task-hint task-error" aria-required="true" aria-invalid="false"></textarea>
+                            <small id="task-hint" class="visually-hidden">
+                                Напишите задачу, от 2 до 70 символов.
+                            </small>
+                            <span id="task-error" class="visually-hidden" role="alert"></span>
+                        </div>
+                        </fieldset>
+
+                        <div class="modal-actions">
+                            <button type="button" class="diary__cancel" id="cancel" autofocus>Отмена</button>
+                            <button type="button" class="diary__submit" onclick="submitForm()">Отправить</button>
+                        </div>
                 </form>
             </div>
         </dialog>

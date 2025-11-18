@@ -32,7 +32,8 @@ function validateTask() {
     }
 }
 
-// Обработка ошибки
+
+
 function showError(input, message) {
     input.style.borderColor = '#dc3545';
     input.style.boxShadow = '0 0 5px rgba(220, 53, 69, 0.3)';
@@ -49,11 +50,13 @@ function showError(input, message) {
     }
     errorElement.textContent = message;
 
+    input.setAttribute('aria-invalid', 'true');
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
         screenReaderError.textContent = message;
     }
 }
+
 
 
 function clearError(input) {
@@ -65,11 +68,14 @@ function clearError(input) {
         errorElement.textContent = '';
     }
 
+    input.setAttribute('aria-invalid', 'false');
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
-        screenReaderError.textContent = '';
+        screenReaderError.textContent = 'Поле заполнено правильно';
     }
 }
+
+
 // Очистка ошибок при закрытии модалки
 document.getElementById('cancel').addEventListener('click', function() {
     
@@ -110,7 +116,9 @@ function submitForm() {
 
     addTaskToList(data);
 
-    alert('Задача добавлена!');
+    document.getElementById('task-status').textContent = 'Задача добавлена!';
+
+
     addTask.close();
     form.reset();
 
@@ -118,10 +126,14 @@ function submitForm() {
 
 function addTaskToList(taskData) {
     const taskList = document.querySelector('.diary__task-list');
-
+    const status = document.getElementById('task-status');
 
     const taskElement = document.createElement('div');
     taskElement.className = 'task__card';
+    taskElement.setAttribute('tabindex', '0'); // Делаем фокусируемой
+    taskElement.setAttribute('role', 'article'); // Семантическая роль
+    taskElement.setAttribute('aria-label', `Задача: ${taskData.name}. Описание: ${taskData.task}. Дата: ${taskData.date}. Удалить задача.`);
+    
     taskElement.innerHTML = `
         <div class="task-item__header">
             <h4 class="task-item__title">${taskData.name}</h4>
@@ -129,14 +141,54 @@ function addTaskToList(taskData) {
         </div>
         <p class="task-item__description">${taskData.task}</p>
         <div class="task-item__actions">
-            <button class="task-item__delete">Удалить</button>
+            <button class="task-item__delete" aria-label="Удалить задачу ${taskData.name}">Удалить</button>
         </div>
     `;
 
     taskList.appendChild(taskElement);
 
+    // УВЕДОМЛЕНИЕ ДЛЯ СКРИНРИДЕРА
+    if (status) {
+        status.textContent = `Задача "${taskData.name}" добавлена`;
+        setTimeout(() => status.textContent = '', 3000);
+    }
+
+    // УДАЛЕНИЕ С УВЕДОМЛЕНИЕМ
     taskElement.querySelector('.task-item__delete').addEventListener('click', function() {
+        const taskName = taskData.name;
         taskElement.remove();
+        
+        if (status) {
+            status.textContent = `Задача "${taskName}" удалена`;
+            setTimeout(() => status.textContent = '', 3000);
+        }
     });
+
+    return taskElement;
 }
+
+
+// function addTaskToList(taskData) {
+//     const taskList = document.querySelector('.diary__task-list');
+
+
+//     const taskElement = document.createElement('div');
+//     taskElement.className = 'task__card';
+//     taskElement.innerHTML = `
+//         <div class="task-item__header">
+//             <h4 class="task-item__title">${taskData.name}</h4>
+//             <span class="task-item__date">${taskData.date}</span>
+//         </div>
+//         <p class="task-item__description">${taskData.task}</p>
+//         <div class="task-item__actions">
+//             <button class="task-item__delete">Удалить</button>
+//         </div>
+//     `;
+
+//     taskList.appendChild(taskElement);
+
+//     taskElement.querySelector('.task-item__delete').addEventListener('click', function() {
+//         taskElement.remove();
+//     });
+// }
 

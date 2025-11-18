@@ -54,6 +54,13 @@ projectCards.forEach(card => {
     card.addEventListener('click', function() {
         openModal(this.dataset.project);
     });
+
+    card.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openModal(this.dataset.project);
+        }
+    });
 });
 
 document.getElementById('close').addEventListener('click', closeModal);
@@ -64,7 +71,7 @@ projectModal.addEventListener('close', () => {
     }
 });
 
-// Закрытие по клику на backdrop
+
 projectModal.addEventListener('click', (event) => {
     if (event.target === projectModal) {
         closeModal();

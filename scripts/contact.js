@@ -25,9 +25,6 @@ function validateEmail(){
 
     if (!emailRegex.test(email)) {
         showError(emailInput, 'Введите корректный email (например: ivanov@mail.ru)');
-        emailField.setAttribute('aria-invalid', 'true');
-        emailError.textContent = 'Некорректный email';
-        emailError.classList.remove('visually-hidden');
         return false;
     } else {
         clearError(emailInput);
@@ -72,7 +69,6 @@ function showError(input, message) {
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
         screenReaderError.textContent = message;
-        screenReaderError.classList.remove('visually-hidden');
     }
 }
 
@@ -89,8 +85,7 @@ function clearError(input) {
     input.setAttribute('aria-invalid', 'false');
     const screenReaderError = document.getElementById(input.id + '-error');
     if (screenReaderError) {
-        screenReaderError.textContent = '';
-        screenReaderError.classList.add('visually-hidden');
+        screenReaderError.textContent = 'Поле заполнено правильно';
     }
 }
 
