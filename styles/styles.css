@@ -11,6 +11,7 @@
     --color-navigation: #222629;
     --color-error: #e74c3c;
     --color-progress: #bebebe;
+    --color-selected: #3c4349;
 
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     --radius: .75rem;
@@ -157,35 +158,25 @@ textarea {
     padding: 0;
 }
 
-.nav__item {
-    margin: 0;
-}
-
 .nav__link {
     display: block;
     padding: var(--space-md);
     color: var(--color-text-base);
     text-decoration: none;
+    font-weight: bold;
     transition: background-color 0.3s;
     font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    border-radius: var(--radius);
 }
 
 .nav__link:hover {
     background: var(--color-accent);
+    border-radius: var(--radius);
 }
 
-.nav-link[aria-current="page"] {
-    background: #0066cc;
+.nav__link[aria-current="page"] {
+    background: var(--color-selected) !important;
     color: white;
-}
-
-.nav__item--active .nav__link {
-    background: var(--color-navigation);
-    font-weight: bold;
-}
-
-.nav__item--active:hover .nav__link {
-    background-color: var(--color-accent);
     border-radius: var(--radius);
 }
 
