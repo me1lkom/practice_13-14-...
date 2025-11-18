@@ -118,7 +118,7 @@ function submitForm(){
     }
     console.log(data)
 
-    alert('Ваше сообщение отправлено!');
+    document.getElementById('form-status').textContent = 'Сообщение отправлено!';
 
     form.reset();
 

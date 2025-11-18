@@ -519,6 +519,10 @@ textarea {
     display: block;
 }
 
+.contacts__fieldset {
+    border: none;
+}
+
 .contacts__label {
     display: block;
     margin-bottom: 0.5rem;
