@@ -17,16 +17,16 @@
         </header>
         <nav aria-label="Основная навигация" class="nav">
             <ul class="nav__list">
-                <li class="nav__item nav__item--active">
+                <li class="nav__item">
                     <a class="nav__link" href="../index.html">Главная</a>
                 </li>
-                <li class="nav__item nav__item--active">
+                <li class="nav__item">
                     <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
                 </li>
-                <li class="nav__item nav__item--active">
+                <li class="nav__item">
                     <a class="nav__link" href="diary.html">Дневник</a>
                 </li>
-                <li class="nav__item nav__item--active">
+                <li class="nav__item">
                     <a class="nav__link" href="contacts.html">Контакты</a>
                 </li>
             </ul>
@@ -34,15 +34,16 @@
         <main id="main" class="main">
             <section class="project-page">
                 <h2 class="project-page__title">Мои проекты</h2>
-                <div class="project-page__filter" aria-label="Фильтры поиска">
+                <fieldset class="project-page__filter">
+                    <legend class="visually-hidden">Фильтры проектов по технологиям</legend>
                     <button class="button button_all" data-filter="all">Всё</button>
                     <button class="button button_html" data-filter="html">html</button>
                     <button class="button button_js" data-filter="js">js</button>
                     <button class="button button_react" data-filter="react">react</button>
-                </div>
+                </fieldset>
                 <div class="project-page-preview">
                     <div class="project-page-preview__grid">
-                        <button class="project-page__card html" data-project="project1">
+                        <div class="project-page__card html" data-project="project1" tabindex="0" role="button" aria-label="Открыть проект 'Сайт визитка'">
                             <picture>
                                     <source type="image/avif" srcset="../images/project1-300.avif 300w, ../images/project1-450.avif 450w, ../images/project1-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
                                     <source type="image/webp" srcset="../images/project1-300.webp 300w, ../images/project1-450.webp 450w, ../images/project1-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
@@ -55,8 +56,8 @@
                                     Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
                                 </p>
                             </div>
-                        </button>
-                        <button class="project-page__card js" data-project="project2">
+                        </div>
+                        <div class="project-page__card js" data-project="project2" tabindex="0" role="button" aria-label="Открыть проект 'Todo приложение'">
                             <picture>
                                     <source type="image/avif" srcset="../images/project2-300.avif 300w, ../images/project2-450.avif 450w, ../images/project2-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
                                     <source type="image/webp" srcset="../images/project2-300.webp 300w, ../images/project2-450.webp 450w, ../images/project2-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
@@ -69,9 +70,9 @@
                                     Приложение для управления задачами с использованием JavaScript.
                                 </p>
                             </div>
-                        </button>
+                        </div>
 
-                        <button class="project-page__card react" data-project="project3">
+                        <div class="project-page__card react" data-project="project3" tabindex="0" role="button" aria-label="Открыть проект 'Интернет магазин'">
                             <picture>
                                     <source type="image/avif" srcset="../images/project3-300.avif 300w, ../images/project3-450.avif 450w, ../images/project3-600.avif 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
                                     <source type="image/webp" srcset="../images/project3-300.webp 300w, ../images/project3-450.webp 450w, ../images/project3-600.webp 600w" sizes="(max-width: 768px) calc(100vw - 2rem), 22rem">
@@ -84,7 +85,7 @@
                                     Прототип интернет-магазина с корзиной товаров и фильтрацией.
                                 </p>
                             </div>
-                        </button>
+                        </div>
 
                     </div>
                 </div>
@@ -96,7 +97,7 @@
             <p class="footer__text">&copy; 2025 Все права защищены.</p>
         </footer>
 
-        <dialog id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+        <dialog id="projectModal" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
             <div class="modal-content">
                 <img id="modalImage" src="" alt="" class="modal-image">
                 <h2 id="modalTitle"></h2>

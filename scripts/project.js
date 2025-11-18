@@ -43,7 +43,6 @@ function openModal(projectId) {
     projectModal.showModal();
 }
 
-// Функция закрытия модалки  
 function closeModal() {
     projectModal.close();
     if (previousActiveElement) {
@@ -51,20 +50,18 @@ function closeModal() {
     }
 }
 
-// Обработчики для карточек
 projectCards.forEach(card => {
     card.addEventListener('click', function() {
         openModal(this.dataset.project);
     });
 });
 
-// Закрытие модалки
 document.getElementById('close').addEventListener('click', closeModal);
 
-// Закрытие по Escape
-projectModal.addEventListener('cancel', (event) => {
-    event.preventDefault();
-    closeModal();
+projectModal.addEventListener('close', () => {
+    if (previousActiveElement) {
+        previousActiveElement.focus();
+    }
 });
 
 // Закрытие по клику на backdrop
@@ -74,7 +71,7 @@ projectModal.addEventListener('click', (event) => {
     }
 });
 
-// Tab-циклинг внутри модалки
+
 projectModal.addEventListener('keydown', function(event) {
     if (event.key === 'Tab') {
         const focusableElements = projectModal.querySelectorAll(

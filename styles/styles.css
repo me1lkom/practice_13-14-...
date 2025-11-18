@@ -896,6 +896,7 @@ select.error-border {
     gap: 20px;
     margin: 40px;
     flex-wrap: wrap;
+    border: none;
 }
 
 .button {
