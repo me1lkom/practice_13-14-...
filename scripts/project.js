@@ -27,6 +27,8 @@ const projectCards = document.querySelectorAll('.project-page__card');
 
 // Добавляем обработчики
 projectCards.forEach(card => {
+    previousActiveElement = document.activeElement;
+
     card.addEventListener('click', function() {
         const projectId = this.dataset.project;
         const project = projects[projectId];
@@ -40,6 +42,9 @@ projectCards.forEach(card => {
         
         // Показываем модалку
         document.getElementById('projectModal').showModal();
+
+        modal.focus();
+        document.querySelectorAll('body > *:not(.modal):not(.overlay)').forEach(el => el.setAttribute('aria-hidden', 'true'));
     });
 });
 
@@ -47,5 +52,7 @@ document.getElementById('close').addEventListener('click', function() {
     
     projectModal.close();
     projectModal.reset();
-
+    if (previousActiveElement) {
+        previousActiveElement.focus();
+    }
 });
