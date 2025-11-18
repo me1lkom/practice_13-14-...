@@ -26,7 +26,6 @@ const projectCards = document.querySelectorAll('.project-page__card');
 const projectModal = document.getElementById('projectModal');
 let previousActiveElement = null;
 
-// Функция открытия модалки
 function openModal(projectId) {
     previousActiveElement = document.activeElement;
     const project = projects[projectId];

@@ -76,20 +76,19 @@ function clearError(input) {
 }
 
 
-// Очистка ошибок при закрытии модалки
 document.getElementById('cancel').addEventListener('click', function() {
     
     addTask.close();
     addTask.reset();
 
 });
+
 document.getElementById('addTask').addEventListener('click', function(event) {
     if (event.target === this) {
         this.close();
     }
 });
 
-// Общая проверка выполнения валидаций
 function validateForm() {
     const isNameValid = validateTaskName();
     const isTaskValid = validateTask();
@@ -130,8 +129,8 @@ function addTaskToList(taskData) {
 
     const taskElement = document.createElement('div');
     taskElement.className = 'task__card';
-    taskElement.setAttribute('tabindex', '0'); // Делаем фокусируемой
-    taskElement.setAttribute('role', 'article'); // Семантическая роль
+    taskElement.setAttribute('tabindex', '0');
+    taskElement.setAttribute('role', 'article');
     taskElement.setAttribute('aria-label', `Задача: ${taskData.name}. Описание: ${taskData.task}. Дата: ${taskData.date}. Удалить задача.`);
     
     taskElement.innerHTML = `
@@ -147,13 +146,11 @@ function addTaskToList(taskData) {
 
     taskList.appendChild(taskElement);
 
-    // УВЕДОМЛЕНИЕ ДЛЯ СКРИНРИДЕРА
     if (status) {
         status.textContent = `Задача "${taskData.name}" добавлена`;
         setTimeout(() => status.textContent = '', 3000);
     }
 
-    // УДАЛЕНИЕ С УВЕДОМЛЕНИЕМ
     taskElement.querySelector('.task-item__delete').addEventListener('click', function() {
         const taskName = taskData.name;
         taskElement.remove();
@@ -166,29 +163,3 @@ function addTaskToList(taskData) {
 
     return taskElement;
 }
-
-
-// function addTaskToList(taskData) {
-//     const taskList = document.querySelector('.diary__task-list');
-
-
-//     const taskElement = document.createElement('div');
-//     taskElement.className = 'task__card';
-//     taskElement.innerHTML = `
-//         <div class="task-item__header">
-//             <h4 class="task-item__title">${taskData.name}</h4>
-//             <span class="task-item__date">${taskData.date}</span>
-//         </div>
-//         <p class="task-item__description">${taskData.task}</p>
-//         <div class="task-item__actions">
-//             <button class="task-item__delete">Удалить</button>
-//         </div>
-//     `;
-
-//     taskList.appendChild(taskElement);
-
-//     taskElement.querySelector('.task-item__delete').addEventListener('click', function() {
-//         taskElement.remove();
-//     });
-// }
-
