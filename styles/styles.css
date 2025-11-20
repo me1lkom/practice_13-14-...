@@ -589,8 +589,8 @@ textarea {
 
 
 .contacts__submit {
-    background: var(--color-accent);
-    color: var(--color-text-base);
+    background: var(--color-primary);
+    color: black;
     border: none;
     padding: 12px 24px;
     border-radius: var(--radius);
